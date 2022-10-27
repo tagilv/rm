@@ -1,10 +1,12 @@
+import Modal from "./components/Modal";
 import "./App.css";
-import Characters from "./Characters";
+import Characters from "./components/Characters";
 
 function App() {
   return (
     <div className="App">
       <Characters />
+      <Modal />
     </div>
   );
 }

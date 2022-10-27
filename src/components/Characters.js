@@ -35,7 +35,7 @@ function Characters() {
       <h2>Rick and Morty app</h2>
       {!loading ? (
         characters.map((character) => {
-          return <Character character={character} />;
+          return <Character key={character.name} character={character} />;
         })
       ) : (
         <p>.....loading</p>
