@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Character from "./Character";
+import Grid2 from "@mui/material/Unstable_Grid2";
+import Item2 from "@mui/material/Unstable_Grid2";
 
 function Characters() {
   const [characters, setCharacters] = useState([]);
@@ -32,16 +34,26 @@ function Characters() {
 
   return (
     <div>
-      <h2>Rick and Morty app</h2>
-      {!loading ? (
-        characters.map((character) => {
-          return <Character key={character.name} character={character} />;
-        })
-      ) : (
-        <p>.....loading</p>
-      )}
-      {/* If application encounter error, show the below */}
-      {error && <p>{error}</p>}
+      <Grid2
+        container
+        rowSpacing={{ xs: 2, md: 3 }}
+        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+      >
+        {!loading ? (
+          characters.map((character) => {
+            return (
+              <Item2 xs={6} sm={4} md={3}>
+                {" "}
+                <Character key={character.name} character={character} />
+              </Item2>
+            );
+          })
+        ) : (
+          <p>.....loading</p>
+        )}
+        {/* If application encounter error, show the below */}
+        {error && <p>{error}</p>}
+      </Grid2>
     </div>
   );
 }
