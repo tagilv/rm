@@ -1,14 +1,13 @@
-import Modal from "./components/Modal";
+// import Modal from "./components/Modal";
 import "./App.css";
-import Characters from "./components/Characters";
-import Navbar from "./components/Navbar";
+// import Characters from "./components/Characters";
+// import Navbar from "./components/Navbar";
+import Home from "./views/Home";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Characters />
-      <Modal />
+      <Home />
     </div>
   );
 }

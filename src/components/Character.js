@@ -1,5 +1,5 @@
 import React, { useState, character } from "react";
-import Modal from "./Modal";
+import MyModal from "./MyModal";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/system";
 import Card from "@mui/material/Card";
@@ -8,17 +8,17 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+// const style = {
+//   position: "absolute",
+//   top: "50%",
+//   left: "50%",
+//   transform: "translate(-50%, -50%)",
+//   width: 400,
+//   bgcolor: "background.paper",
+//   border: "2px solid #000",
+//   boxShadow: 24,
+//   p: 4,
+// };
 
 function Character({ character }) {
   const [open, setOpen] = React.useState(false);
@@ -38,9 +38,14 @@ function Character({ character }) {
         </CardContent>
         <CardActions>
           <Button onClick={handleOpen} size="small">
-            Open Modal
+            More Info
           </Button>
-          <Modal
+          <MyModal
+            open={open}
+            handleClose={handleClose}
+            character={character}
+          />
+          {/* <Modal
             open={open}
             onClose={handleClose}
             aria-labelledby="modal-modal-title"
@@ -53,8 +58,9 @@ function Character({ character }) {
               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                 {character.name}
               </Typography>
+              <button onClick={handleClose}>Close Modal</button>
             </Box>
-          </Modal>
+          </Modal> */}
         </CardActions>
       </Card>
     </div>
