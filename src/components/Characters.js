@@ -65,6 +65,8 @@ function Characters() {
       >
         {!loading ? (
           filteredSearchResults().map((character) => {
+            //characters here if search for all
+
             return (
               <Item2 xs={6} sm={4} md={3}>
                 {" "}
@@ -83,3 +85,5 @@ function Characters() {
 }
 
 export default Characters;
+
+//for pagination, use dynamic variable in url, put the value in [] and then, skip filter function (keep handle search), and then filter over charcters

@@ -2,6 +2,7 @@ import React from "react";
 import { Box } from "@mui/system";
 import { Modal, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
+import style from "./style/style.css";
 
 function MyModal({ handleClose, open, character }) {
   const style = {
@@ -15,7 +16,6 @@ function MyModal({ handleClose, open, character }) {
     boxShadow: 24,
     p: 4,
   };
-  // if (!open) return null;
 
   return (
     <Modal
