@@ -13,7 +13,7 @@ function Characters() {
   const [searchValue, setSearchValue] = useState("");
 
   const fetchCharacters = () => {
-    const url = `https://rickandmortyapi.com/api/character/?name=${searchValue}`;
+    const url = `https://rickandmortyapi.com/api/character`;
     fetch(url)
       .then((response) => response.json())
       .then((result) => {
@@ -27,6 +27,7 @@ function Characters() {
         // Set the condition of what will happen in the event of an error below (using {})
         setError(error.message);
         console.log(error);
+        setLoading(false);
       });
   };
 
@@ -57,20 +58,20 @@ function Characters() {
   return (
     <div className="characters">
       {/* handleSetSearch here is a function that we are passing a prop top the child, in the child we call it when clicking on the button. And then we send the searchValue back to the parent */}
-      <Navbar handleSetSearch={handleSetSearch} />
+      <Navbar handleSetSearch={handleSetSearch} searchValue={searchValue} />
       <Grid2
         container
         rowSpacing={{ xs: 2, md: 3 }}
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
       >
-        {!loading ? (
+        {!loading && characters.length !== 0 ? (
           filteredSearchResults().map((character) => {
             //characters here if search for all
 
             return (
-              <Item2 xs={6} sm={4} md={3}>
+              <Item2 xs={6} sm={4} md={3} key={character.name}>
                 {" "}
-                <Character key={character.name} character={character} />
+                <Character character={character} />
               </Item2>
             );
           })
@@ -78,7 +79,7 @@ function Characters() {
           <p>.....loading</p>
         )}
         {/* If application encounter error, show the below */}
-        {error && <p>{error}</p>}
+        {error && !loading && <p>{error}</p>}
       </Grid2>
     </div>
   );
